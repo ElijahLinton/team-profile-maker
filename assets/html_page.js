@@ -39,7 +39,7 @@ const createProfile = team => {
         return `
         <div class="card employee-card manager-card">
             <div class="card-header text-center">
-                <h2 class="card-title">${manager.getName()}</h2>
+                <h2 class="card-title">${manager.getEmployeeName()}</h2>
                 <h4 class="card-title">Title: ${manager.getRole()}</h4>
             </div>
             <div class="card-body bg-light">
@@ -58,7 +58,7 @@ const createProfile = team => {
         return `
         <div class="card employee-card engineer-card">
             <div class="card-header text-center">
-                <h2 class="card-title">${engineer.getName()}</h2>
+                <h2 class="card-title">${engineer.getEmployeeName()}</h2>
                 <h4 class="card-title">Title: ${engineer.getRole()}</h4>
             </div>
             <div class="card-body bg-light">
@@ -77,7 +77,7 @@ const createProfile = team => {
         return `
         <div class="card employee-card intern-card">
             <div class="card-header text-center">
-                <h2 class="card-title">${intern.getName()}</h2>
+                <h2 class="card-title">${intern.getEmployeeName()}</h2>
                 <h4 class="card-title">Title: ${intern.getRole()}</h4>
             </div>
             <div class="card-body bg-light">

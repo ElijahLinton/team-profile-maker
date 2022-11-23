@@ -13,9 +13,9 @@ const Intern = require('./Intern');
 
 
 const direct = path.resolve(__dirname, 'dist')
-const outputPath = path.join(DIST_DIR, 'index.html');
+const outputPath = path.join(direct, 'index.html');
 
-const render = require('./src');
+const generate = require('./html_page');
 
 
 const roster = [];
@@ -56,7 +56,7 @@ function initApp() {
         ]).then(answers => {
             const managerInfo = new Manager(answers.new_manager, answers.managerId, answers.Email_manager, answers.Office_Number);
             roster.push(managerInfo);
-            idArr.push(answers.IdOfmanager);
+            identity.push(answers.IdOfmanager);
             addTeam();
         });
     }
@@ -118,7 +118,7 @@ function initApp() {
         ]).then(answers => {
             const engineer = new Engineer(answers.NameOfengineer, answers.IdOfengineer, answers.EmailOfengineer, answers.GithubOfengineer);
             roster.push(engineer);
-            idArr.push(answers.IdOfengineer);
+            identity.push(answers.IdOfengineer);
             addTeam();
         });
     }
@@ -157,7 +157,7 @@ function initApp() {
         ]).then(answers => {
             const intern = new Intern(answers.NameOfintern, answers.idOfintern, answers.EmailOfintern, answers.SchoolOfintern);
             roster.push(intern);
-            idArr.push(answers.internId);
+            identity.push(answers.internId);
             addTeam();
         });
     }
@@ -169,7 +169,7 @@ function initApp() {
             fs.mkdirSync(direct)
         }
         console.log("Generating Team Profile.... ");
-        fs.writeFileSync(outputPath, render(teamArr), "utf-8");
+        fs.writeFileSync(outputPath, generate(roster), "utf-8");
     }
 
     addManager();
