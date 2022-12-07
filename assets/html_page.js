@@ -1,4 +1,4 @@
-module.exports = team => {
+const teamMate = (worker) =>{
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -22,19 +22,19 @@ module.exports = team => {
         <div class="container">
             <div class="row">
                 <div class="main-section col-12 d-flex justify-content-center">
-                    ${createProfile(team)}
+                    ${createProfile(worker)}
                 </div>
             </div>
         </div>
     </body>
     </html>
-    `;
-};
+    `
+}
 
-// Create Team Profile
-const createProfile = team => {
 
-    // Create Manager Profile
+const createProfile = worker => {
+
+
     const createManager = manager => {
         return `
         <div class="card employee-card manager-card">
@@ -53,7 +53,7 @@ const createProfile = team => {
         `;
     };
 
-    // Create Engineer Profile
+
     const createEngineer = engineer => {
         return `
         <div class="card employee-card engineer-card">
@@ -72,7 +72,7 @@ const createProfile = team => {
         `;
     };
 
-    // Create Intern Profile
+
     const createIntern = intern => {
         return `
         <div class="card employee-card intern-card">
@@ -91,23 +91,25 @@ const createProfile = team => {
         `;
     };
 
-    const html = [];
+    let crew = [];
 
-    html.push(team
-        .filter(employee => employee.getRole() === 'Manager')
+    crew.push(worker
+        .filter(employee => employee.getRole() === "Manager")
         .map(manager => createManager(manager))
     );
-    html.push(team
-        .filter(employee => employee.getRole() === 'Engineer')
+    crew.push(worker
+        .filter(employee => employee.getRole() === "Engineer")
         .map(engineer => createEngineer(engineer))
-        .join("")
+        .join('')
     );
-    html.push(team
-        .filter(employee => employee.getRole() === 'Intern')
+    crew.push(worker
+        .filter(employee => employee.getRole() === "Intern")
         .map(intern => createIntern(intern))
-        .join("")
+        .join('')
     );
 
-    return html.join("");
+    return crew.join("");
 
 }
+
+module.exports = teamMate
